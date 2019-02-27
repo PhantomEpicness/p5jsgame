@@ -24,6 +24,7 @@
       var h = window.innerHeight;
       var ball = new ball();
        var ball2 = new ball2();
+       var d = 0;
       function setup(){
         createCanvas(w,h);
       }
@@ -33,6 +34,7 @@
         ball.move();
         ball2.show();
         ball2.move();
+        ball2.kill();
       }
 
       
@@ -71,7 +73,7 @@
         this.x = 200;
         this.y = 200;
         this.show = function(){
-          fill(color('red'));
+          fill(color('blue'));
           ellipse(this.x,this.y,100,100);
           
         };
@@ -92,6 +94,14 @@
             this.y += 10;
           }
           
+        }
+        this.kill = function(){
+          d = dist(this.x,this.y,ball.x,ball.y)
+          if (d < 50){
+            // stop game and say gameonver
+            noLoop();
+            window.alert("You Lose!")
+          }
         }
         }
 
