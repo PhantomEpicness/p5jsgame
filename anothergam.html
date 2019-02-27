@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <style>
+      body{
+        margin:0px;
+        padding:0;
+        overflow:hidden;
+        text-align:center;
+      }
+      div {
+        border-style:dotted;
+      }
+    </style>
+    <script src="p5.min.js"></script>
+  </head>
+  
+  <body>
+    <div>
+    <span>X:</span><p id="x"></p>
+    <span>Y:</span><p id="y"></p>
+    </div>
+    <script>
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var ball = new ball();
+       var ball2 = new ball2();
+      function setup(){
+        createCanvas(w,h);
+      }
+      function draw(){
+        background(255);
+        ball.show();
+        ball.move();
+        ball2.show();
+        ball2.move();
+      }
+
+      
+      function ball(){
+        this.x = 100;
+        this.y = 100;
+        this.show = function(){
+          fill(color('red'));
+          ellipse(this.x,this.y,100,100);
+                  this.show = function(){
+          fill(color('red'));
+          ellipse(this.x,this.y,100,100);
+                  }
+          
+        };
+        this.move = function(){
+          if (keyIsDown(68)){
+            this.x += 10;
+          } // right arrow
+          if (keyIsDown(65)){
+            //leftarrow
+            this.x -= 10;
+          }
+          if (keyIsDown(87)){
+            // up arrow
+            this.y -= 10;
+          }
+          if (keyIsDown(83)){
+            // down arrow
+            this.y += 10;
+          }
+        };
+      }
+          
+        function ball2(){
+        this.x = 200;
+        this.y = 200;
+        this.show = function(){
+          fill(color('red'));
+          ellipse(this.x,this.y,100,100);
+          
+        };
+        this.move = function(){
+          if (keyIsDown(76)){
+            this.x += 10;
+          } // right arrow
+          if (keyIsDown(74)){
+            //leftarrow
+            this.x -= 10;
+          }
+          if (keyIsDown(73)){
+            // up arrow
+            this.y -= 10;
+          }
+          if (keyIsDown(75)){
+            // down arrow
+            this.y += 10;
+          }
+          
+        }
+        }
+
+    </script>
+    
+  </body>
+</html>
