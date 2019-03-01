@@ -10,6 +10,9 @@
       div {
         border-style:dotted;
       }
+      h1{
+        color:red;
+      }
     </style>
     <script src="p5.min.js"></script>
   </head>
@@ -18,12 +21,15 @@
     <div>
     <span>X:</span><p id="x"></p>
     <span>Y:</span><p id="y"></p>
+    <span><h1 id="status"></h1></span>
     </div>
     <script>
       var w = window.innerWidth;
       var h = window.innerHeight;
       var ball = new ball();
        var ball2 = new ball2();
+       var killamine = new killamine();
+       var killamine2 = new killamine2();
        var d = 0;
       function setup(){
         createCanvas(w,h);
@@ -35,7 +41,11 @@
         ball2.show();
         ball2.move();
         ball2.kill();
-      }
+        killamine.show();
+        killamine.kill();
+        killamine2.show();
+        killamine2.kill();
+      };
 
       
       function ball(){
@@ -44,10 +54,10 @@
         this.show = function(){
           fill(color('red'));
           ellipse(this.x,this.y,100,100);
-                  this.show = function(){
+             this.show = function(){
           fill(color('red'));
           ellipse(this.x,this.y,100,100);
-                  }
+            }
           
         };
         this.move = function(){
@@ -68,7 +78,58 @@
           }
         };
       }
-          
+          function killamine(){
+            this.x = 350
+            this.y = 350
+            var size = 50;
+            this.kill = function(){
+          d = dist(this.x,this.y,ball.x,ball.y)
+          d2 = dist(this.x,this.y,ball2.x,ball2.y)
+          if (d < 50 || d2 < 50){
+            fill(color('orange'));
+          ellipse(this.x,this.y,200,200);
+          fill(color('yellow'));
+          ellipse(this.x,this.y,100,100);
+          fill(color('red'));
+          ellipse(this.x,this.y,50,50);
+            // stop game and say gameonver
+            document.getElementById('status').innerHTML = "Game over!"
+            noLoop();
+          }
+        };
+      
+             this.show = function(){
+               var size = 50;
+          fill(color('black'));
+          ellipse(this.x,this.y,size,size);
+        };
+      }
+        function killamine2(){
+            this.x = 850
+            this.y = 250
+            var size = 50;
+            this.kill = function(){
+          d = dist(this.x,this.y,ball.x,ball.y)
+          d2 = dist(this.x,this.y,ball2.x,ball2.y)
+          if (d < 50 || d2 < 50){
+            fill(color('orange'));
+          ellipse(this.x,this.y,200,200);
+          fill(color('yellow'));
+          ellipse(this.x,this.y,100,100);
+          fill(color('red'));
+          ellipse(this.x,this.y,50,50);
+            // stop game and say gameonver
+            document.getElementById('status').innerHTML = "Game over!"
+            noLoop();
+          }
+        };
+             this.show = function(){
+               var size = 50;
+          fill(color('black'));
+          ellipse(this.x,this.y,size,size);
+        };
+            
+          }
         function ball2(){
         this.x = 200;
         this.y = 200;
@@ -101,6 +162,7 @@
             // stop game and say gameonver
             noLoop();
             window.alert("You Lose!")
+            
           }
         }
         }
