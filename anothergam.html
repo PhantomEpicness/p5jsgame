@@ -16,6 +16,7 @@
         color:red;
       }
     </style>
+    <script src="p5.min.js"></script>
     <script src="p5.gif.min.js"></script>
   </head>
   
@@ -37,11 +38,11 @@
        var killamine2 = new killamine2();
         var killamine3 = new killamine3();
                var killamine4 = new killamine4();
-        var killamine5 = new killamine5();
        var d = 0;
        var minesize = 20;
       function setup(){
         createCanvas(w,h);
+        gif = loadGif('explo.gif');
       }
       function draw(){
         background(255);
@@ -58,10 +59,7 @@
         killamine3.kill();
          killamine4.show();
         killamine4.kill();
-         killamine5.show();
-        killamine5.kill();
   }
-      };
 
       
       function ball(){
@@ -156,6 +154,7 @@
           ellipse(this.x,this.y,100,100);
           fill(color('red'));
           ellipse(this.x,this.y,50,50);
+          image(gif, this.x, this.y);
             // stop game and say gameonver
             document.getElementById('status').innerHTML = "Game over!"
             noLoop();
@@ -182,6 +181,7 @@
           ellipse(this.x,this.y,100,100);
           fill(color('red'));
           ellipse(this.x,this.y,50,50);
+          image(gif, this.x, this.y);
             // stop game and say gameonver
             document.getElementById('status').innerHTML = "Game over!"
             noLoop();
@@ -208,6 +208,7 @@
           ellipse(this.x,this.y,100,100);
           fill(color('red'));
           ellipse(this.x,this.y,50,50);
+          image(gif, 200, 200);
             // stop game and say gameonver
             document.getElementById('status').innerHTML = "Game over!"
             noLoop();
@@ -234,6 +235,7 @@
           ellipse(this.x,this.y,100,100);
           fill(color('red'));
           ellipse(this.x,this.y,50,50);
+          image(gif, 200,299);
             // stop game and say gameonver
             document.getElementById('status').innerHTML = "Game over!"
             noLoop();
