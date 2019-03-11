@@ -23,7 +23,8 @@
   <body>
     <div>
       Chase the blue circle!
-    <span><h1 id="status"></h1></span>
+    <span><h1 id="status"></h1>
+    <p id="time"></p></span>
     </div>
     <script>
     // attempting to make ball 1 spawn bombs for ball 2 to evade
@@ -45,6 +46,12 @@
         gif = loadGif('explo.gif');
       }
       function draw(){
+        if (frameCount % 60 == 0 && timer > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer --;
+  }
+  if (frameCount % 60 == 0 && timer2 > 0) { // if the frameCount is divisible by 60, then a second has passed. it will stop at 0
+    timer2 --;
+  }
         background(255);
         ball.show();
         ball.move();
@@ -59,6 +66,7 @@
         killamine3.kill();
          killamine4.show();
         killamine4.kill();
+        document.getElementById("time").innerHTML = timer;
   }
 
       
@@ -93,7 +101,7 @@
                     if ((keyIsDown(39)) && (timer = 0)){
             // space 2 lay mine
             timer = 5.1;
-            spawnbomb()
+            spawnbomb();
           }
         };
       }
